@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">ProyectoFinal</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="email">Email</string>
+    <string name="iniciar_sesion">Iniciar Sesion</string>
+    <string name="register">Registrate</string>
+    <string name="password">Password</string>
+    <string name="create_account">Create Account</string>
+</resources>
