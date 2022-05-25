@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ProyectoFinal">
         <activity
+            android:name=".activities.AddDataActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.AddProductActivity"
             android:exported="false" />
         <activity

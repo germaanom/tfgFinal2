@@ -131,7 +131,7 @@ public class HomeFragment extends Fragment {
                                 for (QueryDocumentSnapshot document : task.getResult()) {
                                 data = document.getData();
                                 nombre=data.get("Nombre").toString();
-                                desc = data.get("Desc").toString();
+                                //desc = data.get("Desc").toString();
                                 list_coops.add(new Cooperativa(nombre, desc,""));
                                 adapter = new CoopsAdapter(list_coops, v.getContext());
                                 recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));

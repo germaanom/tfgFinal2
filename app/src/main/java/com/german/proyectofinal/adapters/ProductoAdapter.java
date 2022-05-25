@@ -45,7 +45,7 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.ViewHo
 
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        TextView coop, nombre;
+        TextView titulo, nombre;
 
         ViewHolder(View itemView){
             super(itemView);
@@ -56,6 +56,7 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.ViewHo
                 public void onClick(View view) {
                     Intent intent = new Intent(context, DataCoopsActivity.class);
                     intent.putExtra("producto", nombre.getText());
+
                     context.startActivity(intent);
                 }
 

@@ -18,14 +18,18 @@ import java.util.Calendar;
 public class DataCoopsActivity extends AppCompatActivity {
     String nombreCoop;
     Button calendario;
+    Button añadir;
     String fecha;
+    String nombreCoop2;
     TextView titulo;
     Button volver;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_coop);
+        nombreCoop2 = getIntent().getExtras().getString("nombre");
         nombreCoop = getIntent().getExtras().getString("producto");
+        añadir = findViewById(R.id.btnAñadirRegistro);
         calendario = findViewById(R.id.btnCaledario);
         titulo = findViewById(R.id.txtNombreC);
         titulo.setText(nombreCoop);
@@ -36,7 +40,6 @@ public class DataCoopsActivity extends AppCompatActivity {
                 int year = cal.get(Calendar.YEAR);
                 int mes = cal.get(Calendar.MONTH);
                 int dia = cal.get(Calendar.DAY_OF_MONTH);
-
                 DatePickerDialog dpd = new DatePickerDialog(DataCoopsActivity.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
@@ -48,6 +51,16 @@ public class DataCoopsActivity extends AppCompatActivity {
             }
         });
 
+        añadir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(DataCoopsActivity.this, AddDataActivity.class);
+                intent.putExtra("nombre", nombreCoop2);
+                //intent.putExtra("coop", nombreCoop2);
+                startActivity(intent);
+                finish();
+            }
+        });
 
     }
 }
