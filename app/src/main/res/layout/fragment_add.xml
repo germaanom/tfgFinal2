@@ -67,7 +67,7 @@
             android:textColorHint="@color/white" />
 
         <Button
-            android:id="@+id/btn_crearCoop"
+            android:id="@+id/btn_atras"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"

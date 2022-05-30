@@ -17,6 +17,7 @@ import android.widget.TextView;
 
 import com.german.proyectofinal.Producto;
 import com.german.proyectofinal.R;
+import com.german.proyectofinal.SpacingItemDecorator;
 import com.german.proyectofinal.adapters.ProductoAdapter;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -69,6 +70,8 @@ public class CoopsActivity extends AppCompatActivity {
                                 nombre = data.get("Nombre").toString();
                                 list_products.add(new Producto("test", nombre));
                                 adapter = new ProductoAdapter(list_products, context);
+                                SpacingItemDecorator itemDecorator = new SpacingItemDecorator(30);
+                                recyclerView.addItemDecoration(itemDecorator);
                                 recyclerView.setLayoutManager(new LinearLayoutManager(context));
                                 recyclerView.setHasFixedSize(true);
                                 recyclerView.setAdapter(adapter);
@@ -91,6 +94,7 @@ public class CoopsActivity extends AppCompatActivity {
                 Intent intent = (new Intent(CoopsActivity.this, AddProductActivity.class));
                 intent.putExtra("nombre", nombreCoop);
                 startActivity(intent);
+                finish();
                 }
             });
         }

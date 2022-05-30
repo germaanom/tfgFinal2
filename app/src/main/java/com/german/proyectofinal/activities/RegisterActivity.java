@@ -42,7 +42,7 @@ public class RegisterActivity extends AppCompatActivity {
         email = (EditText) findViewById(R.id.txtEmail);
         password = (EditText) findViewById(R.id.txtNombreCoop);
         usuario = (EditText) findViewById(R.id.txtUsuario);
-        btn_register = findViewById(R.id.btn_crearCoop);
+        btn_register = findViewById(R.id.btn_atras);
         btn_volver = findViewById(R.id.btn_login);
         //EVENTO ONCLICK PARA VOLVER A INICIAR SESION
         btn_volver.setOnClickListener(new View.OnClickListener() {

@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.german.proyectofinal.Cooperativa;
+import com.german.proyectofinal.SpacingItemDecorator;
 import com.german.proyectofinal.adapters.CoopsAdapter;
 import com.german.proyectofinal.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -134,6 +135,8 @@ public class HomeFragment extends Fragment {
                                 //desc = data.get("Desc").toString();
                                 list_coops.add(new Cooperativa(nombre, desc,""));
                                 adapter = new CoopsAdapter(list_coops, v.getContext());
+                                SpacingItemDecorator itemDecorator = new SpacingItemDecorator(10);
+                                recyclerView.addItemDecoration(itemDecorator);
                                 recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
                                 recyclerView.setHasFixedSize(true);
                                 recyclerView.setAdapter(adapter);

@@ -62,5 +62,15 @@ public class DataCoopsActivity extends AppCompatActivity {
             }
         });
 
+        volver = findViewById(R.id.btn_atras);
+        volver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(DataCoopsActivity.this, CoopsActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
     }
 }

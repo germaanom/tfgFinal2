@@ -2,31 +2,20 @@ package com.german.proyectofinal.fragments;
 
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.german.proyectofinal.R;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 
 /**
@@ -83,49 +72,10 @@ public class AddFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_add, container, false);
 
         fDatabase = FirebaseFirestore.getInstance();
-        /*productos = new ArrayList<>();
-        productosSeleccionados = new ArrayList<>();
-        listaProductos = v.findViewById(R.id.listaProductos);
-        productos2 = new HashMap<String, String>();
-        fDatabase.collection("productos")
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                data = document.getData();
-                                Log.d("asd", ""+data);
-                                productos2 = (Map<String, String>) data.get("Productos");
-                                Iterator i = productos2.keySet().iterator();
-                                while(i.hasNext()){
-                                    productos.add(productos2.get(i.next()).toString());
-                                }
-                                //producto = data.get("Nombre").toString();
-                               // productos.add(producto);
-                                //Log.d("asd", producto);
 
-                            }
-                        }
-                    }
-                });
-
-        ArrayAdapter adp = new ArrayAdapter(getActivity(), android.R.layout.simple_spinner_dropdown_item, productos);
-        listaProductos.setAdapter(adp);
-
-        listaProductos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                String productoSeleecionado = (String) listaProductos.getAdapter().getItem(i);
-                productosSeleccionados.add(productoSeleecionado);
-                for(String products:productosSeleccionados){
-                    Log.d("asdf", products);
-                }
-            }
-        });*/
         nombre = (EditText) v.findViewById(R.id.txtNombreCoop);
         desc = (EditText) v.findViewById(R.id.txtUsuario);
-        boton = v.findViewById(R.id.btn_crearCoop);
+        boton = v.findViewById(R.id.btn_atras);
 
         boton.setOnClickListener(new View.OnClickListener() {
             @Override

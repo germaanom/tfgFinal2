@@ -13,16 +13,11 @@ import android.widget.Toast;
 import com.german.proyectofinal.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity {
     //DECLARACION DE VARIABLES
@@ -41,7 +36,7 @@ public class LoginActivity extends AppCompatActivity {
         email = findViewById(R.id.txtEmail);
         password = findViewById(R.id.txtNombreCoop);
         btn_login = findViewById(R.id.btn_login);
-        btn_register = findViewById(R.id.btn_crearCoop);
+        btn_register = findViewById(R.id.btn_atras);
 
         //EVENTO ONCLICK PARA LOGEARME
         btn_login.setOnClickListener(new View.OnClickListener() {

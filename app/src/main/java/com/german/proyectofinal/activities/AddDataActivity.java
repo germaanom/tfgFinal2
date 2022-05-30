@@ -3,6 +3,7 @@ package com.german.proyectofinal.activities;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -30,6 +31,7 @@ public class AddDataActivity extends AppCompatActivity {
     String nSocio;
     String nombreCoop;
     Button elegirF;
+    Button volver;
     FirebaseFirestore fDatabase;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +46,7 @@ public class AddDataActivity extends AppCompatActivity {
         nombreCoop = getIntent().getExtras().getString("nombre");
 
         coop.setText(nombreCoop);
+        //ABRIR CALENDARIO Y ELEGIR FECHA
         elegirF.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -63,6 +66,7 @@ public class AddDataActivity extends AppCompatActivity {
             }
         });
 
+        //RECOGE LOS DATOS DE LOS EDITEXTS Y EJECUTA WRITEDATA
         añadir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -78,9 +82,20 @@ public class AddDataActivity extends AppCompatActivity {
             }
         });
 
+        volver = findViewById(R.id.btn_volver);
+        volver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(AddDataActivity.this, DataCoopsActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
 
     }
 
+    //METODO QUE CREA UN MAPA CON LOS VALORES DE LOS REGISTROS Y LO AÑADE LA BASE DE DATOS
     public void writeData(String fecha, String kilos, String nSocio, String nombreCoop){
         Map<String, String> data = new HashMap<>();
         data.put("fecha",fecha);
