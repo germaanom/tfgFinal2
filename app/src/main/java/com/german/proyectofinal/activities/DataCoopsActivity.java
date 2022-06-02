@@ -79,12 +79,13 @@ public class DataCoopsActivity extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                                 kiloshoy.setText("Sin datos");
+                                kiloshoy2=0;
                                 for(QueryDocumentSnapshot document : task.getResult()){
-                                    kiloshoy2=0;
+
                                     Map data = new HashMap();
                                     data = document.getData();
                                     Log.d("datos", data.toString());
-                                    kiloshoy2 = Integer.parseInt(data.get("kilos").toString());
+                                    kiloshoy2 += Integer.parseInt(data.get("kilos").toString());
                                     Log.d("kilos", " "+kiloshoy2);
                                     txtkiloshoy = kiloshoy2 + " kilos";
                                     kiloshoy.setText(txtkiloshoy);
