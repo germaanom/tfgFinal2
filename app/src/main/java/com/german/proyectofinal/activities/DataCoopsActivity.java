@@ -1,9 +1,11 @@
 package com.german.proyectofinal.activities;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -132,20 +134,38 @@ public class DataCoopsActivity extends AppCompatActivity {
         borrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                fDatabase.collection("coops").document(nombreCoop2).collection("productos").document(nombreCoop).delete();
-                fDatabase.collection("dataCoops").whereEqualTo("producto", nombreCoop).whereEqualTo("coop", nombreCoop2).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                AlertDialog.Builder alert = new AlertDialog.Builder(DataCoopsActivity.this);
+                alert.setMessage("¿Quieres eliminar el producto y todo lo relacionado con el?")
+                        .setCancelable(false)
+                        .setPositiveButton("Si", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                fDatabase.collection("coops").document(nombreCoop2).collection("productos").document(nombreCoop).delete();
+                                fDatabase.collection("dataCoops").whereEqualTo("producto", nombreCoop).whereEqualTo("coop", nombreCoop2).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                                    @Override
+                                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                                        for(QueryDocumentSnapshot document : queryDocumentSnapshots){
+                                            fDatabase.collection("dataCoops").document(document.getId()).delete();
+                                        }
+                                    }
+                                });
+                                Intent intent  = new Intent(DataCoopsActivity.this, CoopsActivity.class );
+                                intent.putExtra("nombre", nombreCoop2);
+                                startActivity(intent);
+                                finish();
+                                Toast.makeText(DataCoopsActivity.this, "Producto eliminado", Toast.LENGTH_SHORT).show();
+                                dialogInterface.cancel();
+                            }
+
+                        }).setNegativeButton("No", new DialogInterface.OnClickListener() {
                     @Override
-                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                        for(QueryDocumentSnapshot document : queryDocumentSnapshots){
-                            fDatabase.collection("dataCoops").document(document.getId()).delete();
-                        }
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.cancel();
                     }
                 });
-                Intent intent  = new Intent(DataCoopsActivity.this, CoopsActivity.class );
-                intent.putExtra("nombre", nombreCoop2);
-                startActivity(intent);
-                finish();
-                Toast.makeText(DataCoopsActivity.this, "Producto eliminado", Toast.LENGTH_SHORT).show();
+                AlertDialog titulo = alert.create();
+                titulo.setTitle("Eliminar");
+                titulo.show();
             }
         });
 

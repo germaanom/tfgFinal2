@@ -1,6 +1,7 @@
 package com.german.proyectofinal.activities;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
@@ -9,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -111,38 +113,56 @@ public class CoopsActivity extends AppCompatActivity {
             });
 
         //TE ELIMINA LA COOPERATIVA Y TODO LO RELACIONADO CON ELLA
+
+
         borrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                fDatabase = FirebaseFirestore.getInstance();
-                fDatabase.collection("coops").document(nombreCoop).delete().addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void unused) {
-                        Intent intent = new Intent(CoopsActivity.this, NavActivity.class);
-                        startActivity(intent);
-                        finish();
-                        Toast.makeText(CoopsActivity.this, "Cooperativa eliminada", Toast.LENGTH_SHORT).show();
-                    }
-                });
-                fDatabase.collection("coops").document(nombreCoop).collection("productos").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                    @Override
-                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                        for (QueryDocumentSnapshot document : queryDocumentSnapshots){
-                            String producto = document.getData().get("Nombre").toString();
-                            fDatabase.collection("dataCoops").whereEqualTo("producto", producto ).whereEqualTo("coop", nombreCoop).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                                @Override
-                                public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                                    for(QueryDocumentSnapshot document : queryDocumentSnapshots){
-                                        fDatabase.collection("dataCoops").document(document.getId()).delete();
+                AlertDialog.Builder alert = new AlertDialog.Builder(CoopsActivity.this);
+                alert.setMessage("¿Quieres eliminar la cooperativa?")
+                        .setCancelable(false)
+                        .setPositiveButton("Si", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                fDatabase = FirebaseFirestore.getInstance();
+                                fDatabase.collection("coops").document(nombreCoop).delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void unused) {
+                                        Intent intent = new Intent(CoopsActivity.this, NavActivity.class);
+                                        startActivity(intent);
+                                        finish();
+                                        Toast.makeText(CoopsActivity.this, "Cooperativa eliminada", Toast.LENGTH_SHORT).show();
                                     }
-                                }
-                            });
-                            fDatabase.collection("coops").document(nombreCoop).collection("productos").document(document.getId()).delete();
-                        }
-                    }
-                });
-
-
+                                });
+                                fDatabase.collection("coops").document(nombreCoop).collection("productos").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                                    @Override
+                                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                                        for (QueryDocumentSnapshot document : queryDocumentSnapshots){
+                                            String producto = document.getData().get("Nombre").toString();
+                                            fDatabase.collection("dataCoops").whereEqualTo("producto", producto ).whereEqualTo("coop", nombreCoop).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                                                @Override
+                                                public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                                                    for(QueryDocumentSnapshot document : queryDocumentSnapshots){
+                                                        fDatabase.collection("dataCoops").document(document.getId()).delete();
+                                                    }
+                                                }
+                                            });
+                                            fDatabase.collection("coops").document(nombreCoop).collection("productos").document(document.getId()).delete();
+                                        }
+                                    }
+                                });
+                                dialogInterface.cancel();
+                            }
+                        })
+                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                dialogInterface.cancel();
+                            }
+                        });
+                AlertDialog titulo = alert.create();
+                titulo.setTitle("Eliminar");
+                titulo.show();
             }
         });
 
