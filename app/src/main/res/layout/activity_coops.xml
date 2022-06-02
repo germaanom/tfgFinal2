@@ -65,6 +65,27 @@
                 android:background="@drawable/image_rounded"
                 android:text="Añadir producto"
                 android:textColor="@color/white"/>
+            <Button
+                android:id="@+id/btnBorrar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/image_rounded"
+                android:text="Eliminar cooperativa"
+                android:textColor="@color/white"/>
+
+            <Button
+                android:id="@+id/btnAtras"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/image_rounded"
+                android:text="Volver"
+                android:textColor="@color/white"/>
         </LinearLayout>
 
     </ScrollView>

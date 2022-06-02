@@ -9,19 +9,21 @@
     tools:context=".activities.LoginActivity">
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cv_login"
+        android:id="@+id/cv_register"
         android:layout_width="413dp"
         android:layout_height="766dp"
 
         app:cardCornerRadius="15dp"
-        tools:layout_editor_absoluteX="-2dp"
-        tools:layout_editor_absoluteY="-27dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints">
 
         <ImageView
             android:id="@+id/imageView3"
-            android:layout_width="437dp"
-            android:layout_height="798dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:contentDescription="logo"
             app:srcCompat="@drawable/image" />
 
@@ -37,9 +39,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|center"
+            android:layout_marginBottom="40dp"
             android:orientation="vertical"
             android:padding="10dp"
-            android:layout_marginBottom="20dp"
             android:paddingStart="14dp"
             android:paddingEnd="14dp">
 
@@ -48,13 +50,13 @@
                 android:id="@+id/txtUsuario"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
                 android:autofillHints=""
                 android:background="@drawable/image_rounded"
                 android:ems="10"
+                android:textColor="@color/white"
                 android:hint="Usuario"
-
-                android:layout_marginBottom="15dp"
-                android:inputType="textPassword"
+                android:inputType="text"
                 android:minHeight="48dp"
                 android:textAlignment="center"
                 android:textColorHint="@color/white" />
@@ -83,6 +85,7 @@
                 android:background="@drawable/image_rounded"
                 android:ems="10"
                 android:hint="@string/password"
+                android:textColor="@color/white"
                 android:inputType="textPassword"
                 android:minHeight="48dp"
                 android:textAlignment="center"

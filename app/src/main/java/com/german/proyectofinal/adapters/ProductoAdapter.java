@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.german.proyectofinal.activities.CoopsActivity;
 import com.german.proyectofinal.activities.DataCoopsActivity;
 import com.german.proyectofinal.Producto;
 import com.german.proyectofinal.R;
@@ -45,18 +46,18 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.ViewHo
 
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        TextView titulo, nombre;
+        TextView coop, nombre;
 
         ViewHolder(View itemView){
             super(itemView);
             nombre = itemView.findViewById(R.id.txtNombreProducto);
-
+            coop = itemView.findViewById(R.id.txtCoop);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(context, DataCoopsActivity.class);
                     intent.putExtra("producto", nombre.getText());
-
+                    intent.putExtra("coop", coop.getText());
                     context.startActivity(intent);
                 }
 
@@ -65,7 +66,7 @@ public class ProductoAdapter extends RecyclerView.Adapter<ProductoAdapter.ViewHo
 
         void bindData(final Producto item){
             nombre.setText(item.getNombre());
-            //desc.setText(item.getDescripcion());
+            coop.setText(item.getCoop());
         }
     }
 }

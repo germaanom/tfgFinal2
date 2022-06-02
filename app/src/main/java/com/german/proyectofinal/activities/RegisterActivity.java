@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -63,6 +64,8 @@ public class RegisterActivity extends AppCompatActivity {
                     Toast.makeText(RegisterActivity.this, "Ingresa los datos", Toast.LENGTH_SHORT).show();
                 }else{
                     mAuth.createUserWithEmailAndPassword(email2, password2).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+
+
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if(task.isSuccessful()){
@@ -86,17 +89,20 @@ public class RegisterActivity extends AppCompatActivity {
 
 
     public void addUser(String nombre, String correo){
+        fDatabase = FirebaseFirestore.getInstance();
         Map<String, String> user = new HashMap<>();
         user.put("Nombre",nombre);
         user.put("Correo",correo);
-
+        Log.d("asd",nombre);
+        Log.d("asd",correo);
         fDatabase.collection("usuarios")
                 .add(user)
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
-                        Toast.makeText(RegisterActivity.this, "AÑADIDO", Toast.LENGTH_SHORT).show();
-
+                        Map perfil = new HashMap();
+                        perfil.put("desc", "Añade tu descripcion");
+                        fDatabase.collection("profile").document(correo).set(perfil);
                     }
                 });
     }

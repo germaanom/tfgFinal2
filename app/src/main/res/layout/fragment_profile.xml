@@ -7,16 +7,16 @@
     tools:context=".fragments.ProfileFragment">
 
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/image"
-        android:orientation="vertical">
+        android:background="@drawable/image">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginTop="40dp"
+            android:layout_marginBottom="40dp"
             android:orientation="vertical">
 
             <ImageButton
@@ -27,82 +27,86 @@
                 android:src="@drawable/esparrago" />
 
             <TextView
+                android:id="@+id/txtuser"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:fontFamily="@font/fuente"
-                android:textSize="40sp"
-
                 android:textColor="@color/white"
-                android:text="GERMAN ORTIZ"/>
+                android:textSize="40sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/fuente"
-                android:textColor="@color/button"
-                android:textStyle="bold"
                 android:layout_gravity="left"
                 android:layout_marginLeft="30dp"
-                android:layout_marginRight="30dp"
-                android:textSize="20sp"
                 android:layout_marginTop="60dp"
-                android:text="Email:"/>
+                android:layout_marginRight="30dp"
+                android:fontFamily="@font/fuente"
+                android:text="Email:"
+                android:textColor="@color/button"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
             <TextView
                 android:id="@+id/txtEmailP"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/fuente"
-                android:textColor="@color/white"
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
-                android:textSize="20sp"
-                android:text="germaanom21@gmail.com"/>
+                android:fontFamily="@font/fuente"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/fuente"
-                android:textColor="@color/button"
-                android:textStyle="bold"
-                android:layout_marginRight="30dp"
-                android:textSize="20sp"
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="20dp"
-                android:text="Descripcion"/>
-            <TextView
+                android:layout_marginRight="30dp"
+                android:fontFamily="@font/fuente"
+                android:text="Descripcion"
+                android:textColor="@color/button"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <EditText
                 android:id="@+id/txtDesc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/fuente"
-                android:layout_marginRight="30dp"
-                android:textColor="@color/white"
                 android:layout_marginLeft="30dp"
-                android:textSize="20sp"
-                android:text="asdfjindjsnjkdnasjkfnjkanKJNASDFJKNDJKNSDFJKFSDNJKFSDNSDJKFNJKSDNKSDNFJKSDNJKFNKFSJDNJKFNSDJKFNSKSDFNFKDJNFJKSDNFKJSDNFKSN"/>
+                android:layout_marginRight="30dp"
+                android:maxLength="60"
+                android:fontFamily="@font/fuente"
+                android:hint="Añade tu descripcion"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:textSize="20sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="20dp"
-                android:orientation="horizontal">
+                android:orientation="vertical">
+
                 <Button
                     android:id="@+id/editDesc"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_margin="10dp"
+                    android:layout_margin="20dp"
                     android:text="Modificar Descripcion" />
+
                 <Button
                     android:id="@+id/btn_logout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:text="Cerrar Sesion" />
-            </LinearLayout>
-        </LinearLayout>
-    </LinearLayout>
 
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
 
 
 </FrameLayout>

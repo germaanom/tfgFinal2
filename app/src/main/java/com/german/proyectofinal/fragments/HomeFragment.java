@@ -141,8 +141,6 @@ public class HomeFragment extends Fragment {
                                 recyclerView.setHasFixedSize(true);
                                 recyclerView.setAdapter(adapter);
                             }
-                        } else {
-
                         }
                     }
                 });

@@ -2,6 +2,8 @@ package com.german.proyectofinal.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,12 +16,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.german.proyectofinal.Producto;
 import com.german.proyectofinal.R;
 import com.german.proyectofinal.SpacingItemDecorator;
 import com.german.proyectofinal.adapters.ProductoAdapter;
+import com.german.proyectofinal.fragments.HomeFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -37,22 +42,28 @@ public class CoopsActivity extends AppCompatActivity {
     ArrayList<Producto> list_products;
     RecyclerView recyclerView;
     String nombre;
-    String coop;
-    String nombreCoop;
+    Button volver;
+    Button borrar;
+    public String nombreCoop;
     ProductoAdapter adapter;
     Button btnAñadir;
     TextView titulo;
-    
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_coops);
 
+
         //Referencio las variables
         btnAñadir = findViewById(R.id.btnAñadirProducto);
         nombreCoop = getIntent().getExtras().getString("nombre");
+        volver = findViewById(R.id.btnAtras);
         titulo = findViewById(R.id.txtNombrecoop);
         fDatabase = FirebaseFirestore.getInstance();
+        borrar = findViewById(R.id.btnBorrar);
         data = new HashMap<String, String>();
         list_products = new ArrayList<Producto>();
         recyclerView = (RecyclerView) findViewById(R.id.list_productos);
@@ -68,9 +79,9 @@ public class CoopsActivity extends AppCompatActivity {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 data = document.getData();
                                 nombre = data.get("Nombre").toString();
-                                list_products.add(new Producto("test", nombre));
+                                list_products.add(new Producto(nombreCoop, nombre));
                                 adapter = new ProductoAdapter(list_products, context);
-                                SpacingItemDecorator itemDecorator = new SpacingItemDecorator(30);
+                                SpacingItemDecorator itemDecorator = new SpacingItemDecorator(20);
                                 recyclerView.addItemDecoration(itemDecorator);
                                 recyclerView.setLayoutManager(new LinearLayoutManager(context));
                                 recyclerView.setHasFixedSize(true);
@@ -97,5 +108,49 @@ public class CoopsActivity extends AppCompatActivity {
                 finish();
                 }
             });
+
+        borrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                fDatabase = FirebaseFirestore.getInstance();
+                fDatabase.collection("coops").document(nombreCoop).delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        Intent intent = new Intent(CoopsActivity.this, NavActivity.class);
+                        startActivity(intent);
+                        finish();
+                        Toast.makeText(CoopsActivity.this, "Cooperativa eliminada", Toast.LENGTH_SHORT).show();
+                    }
+                });
+                fDatabase.collection("coops").document(nombreCoop).collection("productos").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        for (QueryDocumentSnapshot document : queryDocumentSnapshots){
+                            String producto = document.getData().get("Nombre").toString();
+                            fDatabase.collection("dataCoops").whereEqualTo("producto", producto ).whereEqualTo("coop", nombreCoop).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                                @Override
+                                public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                                    for(QueryDocumentSnapshot document : queryDocumentSnapshots){
+                                        fDatabase.collection("dataCoops").document(document.getId()).delete();
+                                    }
+                                }
+                            });
+                            fDatabase.collection("coops").document(nombreCoop).collection("productos").document(document.getId()).delete();
+                        }
+                    }
+                });
+
+
+            }
+        });
+
+        volver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(CoopsActivity.this, NavActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
         }
     }
