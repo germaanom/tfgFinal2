@@ -40,6 +40,8 @@ public class AddProductActivity extends AppCompatActivity {
         Log.d("asd", nombreCoop);
         titulo = findViewById(R.id.txtNombreCoop);
         titulo.setText(nombreCoop);
+
+        //AÑADE EL PRODUCTO A LA COLECCION Y TE DEVUELVE A LA ACTIVITY DE COOPS
         añadir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -64,6 +66,7 @@ public class AddProductActivity extends AppCompatActivity {
             }
         });
 
+        //TE DEVUELVE A LA ACTIVITY DE COOPS
         atras.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -77,6 +80,7 @@ public class AddProductActivity extends AppCompatActivity {
 
     }
 
+    //METODO QUE AÑADE LOS PRODUCTOS A LA COLECCION
     public void writeProd(Map<String, Object> productos){
        fDatabase.collection("coops").document(titulo.getText().toString()).collection("productos").document(nombreP).set(productos);
 

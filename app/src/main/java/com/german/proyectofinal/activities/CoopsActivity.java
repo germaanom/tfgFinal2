@@ -99,6 +99,7 @@ public class CoopsActivity extends AppCompatActivity {
 
 
 
+        //TE ENVIA A LA ACITVITY PARA AÑADIR PRODUCTOS
         btnAñadir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -109,6 +110,7 @@ public class CoopsActivity extends AppCompatActivity {
                 }
             });
 
+        //TE ELIMINA LA COOPERATIVA Y TODO LO RELACIONADO CON ELLA
         borrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -144,6 +146,7 @@ public class CoopsActivity extends AppCompatActivity {
             }
         });
 
+        //TE VUELVE A LA PANTALLA PRINCIPAL
         volver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -47,6 +47,7 @@ public class DataCoopsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_coop);
+        //REFERENCIO LAS VARIABLES
         fDatabase = FirebaseFirestore.getInstance();
         nombreCoop2 = getIntent().getExtras().getString("coop");
         nombreCoop = getIntent().getExtras().getString("producto");
@@ -60,7 +61,7 @@ public class DataCoopsActivity extends AppCompatActivity {
         titulo.setText(nombreCoop);
 
 
-
+        //SE ABRE EL CALENDARIO Y CON ESA FECHA SE RECOGEN LOS DATOS Y SE MUESTRAN
         calendario.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -99,6 +100,7 @@ public class DataCoopsActivity extends AppCompatActivity {
             }
         });
 
+        //TE DEVUELVE A LA ACTIVITY DE COOPS
         volver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -109,6 +111,7 @@ public class DataCoopsActivity extends AppCompatActivity {
             }
         });
 
+        //TE ENVIA A LA ACTIVITY PARA AÑADIR DATOS
         añadir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -121,6 +124,7 @@ public class DataCoopsActivity extends AppCompatActivity {
         });
 
 
+        //ELIMINA EL PRODUCTO Y TODOO LO RELACIONADO CON EL
         borrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -142,6 +146,7 @@ public class DataCoopsActivity extends AppCompatActivity {
         });
 
 
+        //MUESTRA LOS KILOS TOTALES
         fDatabase.collection("dataCoops").whereEqualTo("coop", nombreCoop2).whereEqualTo("producto", nombreCoop).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
