@@ -60,7 +60,7 @@
             android:textColor="@color/white"
             android:background="@drawable/image_rounded"
             android:ems="10"
-
+            android:maxLength="20"
             android:hint="Producto"
             android:inputType="text"
             android:minHeight="48dp"

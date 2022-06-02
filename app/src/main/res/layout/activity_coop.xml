@@ -59,7 +59,7 @@
                                 android:layout_gravity="center"
                                 android:textAlignment="center"
                                 android:fontFamily="@font/fuente"
-                                android:text="HOY"
+                                android:text="ELEGIR FECHA"
                                 android:textColor="@color/black"
                                 android:textSize="40sp" />
 

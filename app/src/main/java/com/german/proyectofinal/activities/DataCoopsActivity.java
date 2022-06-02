@@ -38,8 +38,9 @@ public class DataCoopsActivity extends AppCompatActivity {
     TextView kilosTotal;
     String fecha;
     TextView kiloshoy;
+    TextView fecha2;
     String txtkiloshoy;
-    int kiloshoy2;
+    double kiloshoy2;
     String nombreCoop2;
     TextView titulo;
     Button volver;
@@ -49,6 +50,7 @@ public class DataCoopsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_coop);
         //REFERENCIO LAS VARIABLES
         fDatabase = FirebaseFirestore.getInstance();
+        fecha2 = findViewById(R.id.txtHoy);
         nombreCoop2 = getIntent().getExtras().getString("coop");
         nombreCoop = getIntent().getExtras().getString("producto");
         añadir = findViewById(R.id.btnAñadirRegistro);
@@ -74,6 +76,7 @@ public class DataCoopsActivity extends AppCompatActivity {
                     public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
                         fecha = i2 + "/" + i1 + "/" + i;
                         calendario.setText(fecha);
+                        fecha2.setText(fecha);
                         fDatabase = FirebaseFirestore.getInstance();
                         fDatabase.collection("dataCoops").whereEqualTo("fecha", fecha).whereEqualTo("coop", nombreCoop2).whereEqualTo("producto", nombreCoop).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                             @Override
@@ -85,7 +88,7 @@ public class DataCoopsActivity extends AppCompatActivity {
                                     Map data = new HashMap();
                                     data = document.getData();
                                     Log.d("datos", data.toString());
-                                    kiloshoy2 += Integer.parseInt(data.get("kilos").toString());
+                                    kiloshoy2 += Double.parseDouble(data.get("kilos").toString());
                                     Log.d("kilos", " "+kiloshoy2);
                                     txtkiloshoy = kiloshoy2 + " kilos";
                                     kiloshoy.setText(txtkiloshoy);
@@ -151,11 +154,11 @@ public class DataCoopsActivity extends AppCompatActivity {
         fDatabase.collection("dataCoops").whereEqualTo("coop", nombreCoop2).whereEqualTo("producto", nombreCoop).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                int kilostotal = 0;
+                double kilostotal = 0;
                 for(QueryDocumentSnapshot document : task.getResult()){
                     Map data = new HashMap();
                     data = document.getData();
-                    kilostotal += Integer.parseInt(data.get("kilos").toString());
+                    kilostotal += Double.parseDouble(data.get("kilos").toString());
                     kilosTotal.setText(""+kilostotal+ " kilos");
                 }
 

@@ -80,7 +80,7 @@ public class AddDataActivity extends AppCompatActivity {
                 coop2 = coop.getText().toString();
                 producto = producto2.getText().toString();
 
-                if(kilos2 != null && fecha != null){
+                if(!kilos2.isEmpty() && !fecha.isEmpty()){
                     writeData(fecha, kilos2, producto, coop2);
                     finish();
                     Toast.makeText(AddDataActivity.this, "Registro Añadido", Toast.LENGTH_SHORT).show();

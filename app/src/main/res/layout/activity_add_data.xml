@@ -61,7 +61,7 @@
             android:ems="10"
             android:hint="Kilos"
             android:textColor="@color/white"
-            android:inputType="number"
+            android:inputType="numberDecimal"
             android:minHeight="48dp"
             android:textAlignment="center"
             android:textColorHint="@color/white" />
