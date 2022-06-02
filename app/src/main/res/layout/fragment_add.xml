@@ -47,6 +47,7 @@
             android:ems="10"
             android:textColor="@color/white"
             android:hint="Nombre de la Cooperativa"
+            android:maxLength="20"
             android:inputType="text"
             android:minHeight="48dp"
             android:textAlignment="center"
@@ -63,6 +64,7 @@
             android:textColor="@color/white"
             android:hint="Descripción"
             android:inputType="text"
+            android:maxLength="20"
             android:minHeight="48dp"
             android:textAlignment="center"
             android:textColorHint="@color/white" />

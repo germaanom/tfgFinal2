@@ -85,8 +85,13 @@ public class AddFragment extends Fragment {
         boton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getContext(), "Cooperativa Creada", Toast.LENGTH_SHORT).show();
-                writeCoop(nombre.getText().toString(), desc.getText().toString());
+                if(!nombre.getText().toString().isEmpty() && !desc.getText().toString().isEmpty()){
+                    Toast.makeText(getContext(), "Cooperativa Creada", Toast.LENGTH_SHORT).show();
+                    writeCoop(nombre.getText().toString(), desc.getText().toString());
+                }else{
+                    Toast.makeText(getContext(), "Rellena todos los campos", Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
 
