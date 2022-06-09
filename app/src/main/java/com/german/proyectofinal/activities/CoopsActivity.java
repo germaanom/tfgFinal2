@@ -108,7 +108,6 @@ public class CoopsActivity extends AppCompatActivity {
                 Intent intent = (new Intent(CoopsActivity.this, AddProductActivity.class));
                 intent.putExtra("nombre", nombreCoop);
                 startActivity(intent);
-                finish();
                 }
             });
 

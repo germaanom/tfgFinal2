@@ -12,5 +12,5 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "ProyectoFinal"
+rootProject.name = "DataCoops"
 include ':app'
