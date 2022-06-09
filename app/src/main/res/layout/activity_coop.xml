@@ -59,7 +59,7 @@
                                 android:layout_gravity="center"
                                 android:textAlignment="center"
                                 android:fontFamily="@font/fuente"
-                                android:text="ELEGIR FECHA"
+                                android:text="@string/choose_date"
                                 android:textColor="@color/black"
                                 android:textSize="40sp" />
 
@@ -69,7 +69,7 @@
                                 android:layout_height="69dp"
                                 android:background="#D8310C"
                                 android:fontFamily="@font/fuente"
-                                android:text="Elige una fecha"
+                                android:text="@string/choose_date"
                                 android:textAlignment="center"
                                 android:textColor="@color/white"
                                 android:textSize="40sp" />
@@ -111,7 +111,7 @@
                                 android:layout_height="match_parent"
                                 android:layout_gravity="center"
                                 android:fontFamily="@font/fuente"
-                                android:text="TOTAL"
+                                android:text="@string/total"
                                 android:textAlignment="center"
                                 android:textColor="@color/black"
                                 android:textSize="40sp" />
@@ -122,7 +122,7 @@
                                 android:layout_height="match_parent"
                                 android:background="#D8310C"
                                 android:fontFamily="@font/fuente"
-                                android:text="Sin datos"
+                                android:text="@string/no_data"
                                 android:textAlignment="center"
                                 android:textColor="@color/white"
                                 android:textSize="40sp" />
@@ -141,7 +141,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
                 android:background="@drawable/image_rounded"
-                android:text="Elige un dia"
+                android:text="@string/choose_day"
                 android:textColor="@color/white"/>
 
             <Button
@@ -151,7 +151,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:background="@drawable/image_rounded"
-                android:text="Añadir Datos"
+                android:text="@string/add_data"
                 android:textColor="@color/white" />
 
 
@@ -166,15 +166,15 @@
                     android:id="@+id/btn_atras"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="right"
-                    android:text="Volver"
+                    android:layout_gravity="end"
+                    android:text="@string/volver"
                     android:textColor="@color/white" />
                 <Button
                     android:id="@+id/btn_borrarP"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="180dp"
-                    android:text="Borrar"
+                    android:text="@string/delete"
                     android:textColor="@color/white" />
             </LinearLayout>
 

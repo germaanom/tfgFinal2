@@ -43,8 +43,8 @@ public class RegisterActivity extends AppCompatActivity {
         email = (EditText) findViewById(R.id.txtEmail);
         password = (EditText) findViewById(R.id.txtNombreCoop);
         usuario = (EditText) findViewById(R.id.txtUsuario);
-        btn_register = findViewById(R.id.btn_atras);
-        btn_volver = findViewById(R.id.btn_login);
+        btn_register = findViewById(R.id.btn_login);
+        btn_volver = findViewById(R.id.btn_atras);
         //EVENTO ONCLICK PARA VOLVER A INICIAR SESION
         btn_volver.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,6 +60,7 @@ public class RegisterActivity extends AppCompatActivity {
                 String email2 = email.getText().toString().trim();
                 String password2 = password.getText().toString().trim();
                 String usuario2 = usuario.getText().toString().trim();
+
                 if(email2.isEmpty() || password2.isEmpty()){
                     Toast.makeText(RegisterActivity.this, "Ingresa los datos", Toast.LENGTH_SHORT).show();
                 }else{
@@ -93,8 +94,7 @@ public class RegisterActivity extends AppCompatActivity {
         Map<String, String> user = new HashMap<>();
         user.put("Nombre",nombre);
         user.put("Correo",correo);
-        Log.d("asd",nombre);
-        Log.d("asd",correo);
+
         fDatabase.collection("usuarios")
                 .add(user)
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {

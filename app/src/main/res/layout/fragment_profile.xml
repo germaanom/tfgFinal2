@@ -43,7 +43,7 @@
                 android:layout_marginTop="60dp"
                 android:layout_marginRight="30dp"
                 android:fontFamily="@font/fuente"
-                android:text="Email:"
+                android:text="@string/email"
                 android:textColor="@color/button"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -65,7 +65,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="30dp"
                 android:fontFamily="@font/fuente"
-                android:text="Descripcion"
+                android:text="@string/desc"
                 android:textColor="@color/button"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -78,7 +78,7 @@
                 android:layout_marginRight="30dp"
                 android:maxLength="60"
                 android:fontFamily="@font/fuente"
-                android:hint="Añade tu descripcion"
+                android:hint="@string/add_desc"
                 android:textColor="@color/white"
                 android:textColorHint="@color/white"
                 android:textSize="20sp" />
@@ -94,14 +94,14 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_margin="20dp"
-                    android:text="Modificar Descripcion" />
+                    android:text="@string/update_desc" />
 
                 <Button
                     android:id="@+id/btn_logout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Cerrar Sesion" />
+                    android:text="@string/logout" />
 
             </LinearLayout>
 

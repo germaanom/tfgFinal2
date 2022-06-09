@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/fuente"
         android:gravity="center"
-        android:text="CREAR COOPERATIVA"
+        android:text="@string/create_coop"
         android:textColor="@color/white"
         android:textSize="40sp"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
@@ -46,7 +46,7 @@
             android:background="@drawable/image_rounded"
             android:ems="10"
             android:textColor="@color/white"
-            android:hint="Nombre de la Cooperativa"
+            android:hint="@string/coop_name"
             android:maxLength="20"
             android:inputType="text"
             android:minHeight="48dp"
@@ -62,7 +62,7 @@
             android:background="@drawable/image_rounded"
             android:ems="10"
             android:textColor="@color/white"
-            android:hint="Descripción"
+            android:hint="@string/desc"
             android:inputType="text"
             android:maxLength="20"
             android:minHeight="48dp"
@@ -75,7 +75,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:background="@drawable/image_rounded"
-            android:text="CREAR COOPERATIVA"
+            android:text="@string/create_coop"
             android:textColor="@color/white" />
 
 
