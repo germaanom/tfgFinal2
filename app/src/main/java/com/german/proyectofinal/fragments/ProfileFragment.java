@@ -151,7 +151,7 @@ public class ProfileFragment extends Fragment {
 
 
 
-        upload.setOnClickListener(new View.OnClickListener() {
+        /*upload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Intent.ACTION_PICK);
@@ -160,7 +160,7 @@ public class ProfileFragment extends Fragment {
 
 
             }
-        });
+        });*/
 
         fDatabase.collection("usuarios").whereEqualTo("Correo", email).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
@@ -192,7 +192,7 @@ public class ProfileFragment extends Fragment {
     }
 
 
-    ActivityResultLauncher<Intent> activityResultLaunch = registerForActivityResult(
+    /*ActivityResultLauncher<Intent> activityResultLaunch = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
             new ActivityResultCallback<ActivityResult>() {
                 @Override
@@ -210,6 +210,6 @@ public class ProfileFragment extends Fragment {
                     fDatabase.collection("profile").document(email).set(perfil);
                     mProgress.cancel();
                 }
-            });
+            });*/
 
 }
